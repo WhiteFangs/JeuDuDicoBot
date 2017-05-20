@@ -18,15 +18,17 @@ In this program I used Android, but [@fourtonfish](https://github.com/fourtonfis
   2. Use [Twitter's PIN-based authorization](https://dev.twitter.com/oauth/pin-based) with the [chosen app's consumer keys](https://gist.github.com/shobotch/5160017) and your bot's account to get your official app's OAuth Tokens
   3. Create a [Twitter application](https://apps.twitter.com) for your bot and get your app's OAuth Tokens
   4. Create the card_data parameter of your call that looks like this:
-  ```card = {
-	'twitter:string:choice1_label': pages[0],
-	'twitter:string:choice2_label': pages[1],
-	'twitter:string:choice3_label': pages[2],
-	'twitter:string:choice4_label': pages[3],
+```javascript
+  card = {
+	'twitter:string:choice1_label': 'choice1',
+	'twitter:string:choice2_label': 'choice2',
+	'twitter:string:choice3_label': 'choice3',
+	'twitter:string:choice4_label': 'choice4',
 	'twitter:long:duration_minutes': 1440,
 	'twitter:api:api:endpoint': '1',
-	'twitter:card': 'poll4choice_text_only', // poll2choice_text_only if you only have 2 choices
-}```
+	'twitter:card': 'poll4choice_text_only', // pollXchoice_text_only if you have X choices (2 <= X <= 4)
+    }
+```
   5. Don't forget to stringify (or JSON encode) the card object.
   6. When you make the call to `https://caps.twitter.com/v2/cards/create.json`, use the user-agent of the official app you chose (in my example: `TwitterAndroid/6.45.0 Nexus 4/17 (LGE;mako;google;occam;0)`)
 
