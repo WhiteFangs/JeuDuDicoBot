@@ -76,6 +76,15 @@ do{
     $wordObject = $result[0];
     $response->closeCursor();
 
+    // remove word root from definition if database is not clean
+    $wordRoot = substr($wordObject['word'], 0, 4);
+    $defSplit = explode(".", $wordObject['def']);
+    foreach ($defSplit as $key => $defPart) {
+        if(stripos($defPart, $wordRoot) !== FALSE)
+            array_splice($defSplit, $key, 1);
+    }
+    $def = trim(implode(".", $defSplit));
+
     $lexinfo = $wordObject['lexinfo'];
 
     $lexQuery = "";
@@ -95,10 +104,9 @@ do{
     $response = $bdd->query($queryWord);
     $result = $response->fetchAll();
     $response->closeCursor();
-}while(count($result) == 0);
+}while(count($result) == 0 || strlen($def) == 0);
 
 // Add all words in one array and shuffle
-$def = $wordObject['def'];
 $words = array($wordObject['word']);
 foreach ($result as $word) {
     $words[] = $word[0];
