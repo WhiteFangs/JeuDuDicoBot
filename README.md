@@ -10,8 +10,11 @@ The tweet is the definition of the first word, the poll choices are made of all 
 The program then posts the poll and the tweet containing the poll, and stores the tweet's id and the right word for the poll in a database.
 Next time the program is run, it will begin by tweeting the right answer for the poll in reply to the poll's tweet.
 
-## Post a Twitter poll
-Posting a Twitter poll is currently not supported in the official Twitter Rest API, so you'll need to hack your way to post one. For that, you must have OAuth Access Tokens for an official Twitter application that supports polls, for instance Twitter for iPhone or Twitter for Android. 
+## Post a Twitter poll: not possible anymore
+Posting a Twitter poll is currently not supported in the official Twitter Rest API, so ~~you'll need to hack your way to post one~~ this bot is not reproducible anymore. I left the old documentation below for archive purpose if you're curious.
+
+## Post a Twitter poll: how it was working before
+For that, you must have OAuth Access Tokens for an official Twitter application that supports polls, for instance Twitter for iPhone or Twitter for Android. 
 In this program I used Android, but [@fourtonfish](https://github.com/fourtonfish) has made a [good example for iPhone in Python](https://gist.github.com/fourtonfish/5ac885e5e13e6ca33dca9f8c2ef1c46e).
 
   1. Create your Twitter bot's account
